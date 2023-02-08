@@ -1,1 +1,61 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Add a feature layer</title>
+    <style>
+      html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.25/"></script>
+  
+    <script>
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/MapView",
+  
+      "esri/layers/FeatureLayer"
+  
+    ], function(esriConfig,Map, MapView, FeatureLayer) {
+  
+    esriConfig.apiKey = "AAPK213d3d4ccccb45e4898bf537834f89f2gF8xwHzBD2RT-lqGv007NdtY6xY_smkA9z5Khp_2-Q56IzFcUgvWp_pHnh9SstFW";
+  
+    const map = new Map({
+      basemap: "arcgis-topographic"
+    });
+  
+    const view = new MapView({
+      container: "viewDiv",
+      map: map,
+      center: [-78.744713, 44.353205],
+      zoom: 14
+    });
+  
+    const popupLindsaybars = {
+        "title": "Lindsaybars",
+        "content": "{BarName}"
+      }
 
+  //Lindsaybars feature layer (points)
+    const Lindsaybars = new FeatureLayer({
+      url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/bars_in_lindsay_ontario/FeatureServer/0",
+      outFields: ["{BarName}"],
+      popupTemplate: popupLindsaybars
+    });
+  
+    map.add(Lindsaybars);
+  
+    });
+  </script>
+  
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+  </html>
