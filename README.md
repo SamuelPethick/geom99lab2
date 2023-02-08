@@ -13,3 +13,4 @@
 Bonus. https://samuelpethick.github.io/geom99lab2/BonusTutorial.html
 
 ### Custom Map Link
+https://samuelpethick.github.io/geom99lab2/BarMap.html
